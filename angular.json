@@ -4,6 +4,10 @@
   "newProjectRoot": "projects",
   "projects": {
     "ngi18n": {
+      "i18n": {
+        "sourceLocale":"en-US",
+        "locales": {"de-DE":"src/locale/messages.de.xlf"}
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -21,11 +25,14 @@
       "prefix": "app",
       "architect": {
         "build": {
+          
           "builder": "@angular/build:application",
           "options": {
+            "localize":["de-DE"],
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -82,7 +89,8 @@
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.spec.json",
             "assets": [
